@@ -15,14 +15,13 @@ class BuyForm extends Component {
       <form
         className="mb-3"
         onSubmit={(event) => {
-          event.preventDefault();
-          console.log("purchasing token...");
-          let etherAmount;
-          etherAmount = this.input.value.toString();
-          etherAmount = window.web3.utils.toWei(etherAmount, "Ether");
-          this.props.buyTokens(etherAmount);
-        }}
-      >
+          event.preventDefault()
+          let etherAmount
+          etherAmount = this.input.value.toString()
+          etherAmount = window.web3.utils.toWei(etherAmount, 'Ether')
+          this.props.buyTokens(etherAmount)
+        }}>
+        
         <div>
           <label className="float-left">
             <b>Input</b>
