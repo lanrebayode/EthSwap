@@ -19,7 +19,7 @@ class Main extends Component {
         <div className='card-body'>
           <BuyForm ethBalance = {this.props.ethBalance}
            tokenBalance = {this.props.tokenBalance}
-           buyTokens = {this.BuyTokens} />
+           buyTokens = {this.props.buyTokens} />
         </div>
       </div>
      </div>

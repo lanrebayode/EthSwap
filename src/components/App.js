@@ -73,12 +73,15 @@ async loadWeb3()  {
 }
 
 //BuyTokens function
-BuyTokens = (etherAmount) => {
+buyTokens = (etherAmount) => {
   this.setState({ loading: true })
-  this.state.ethSwap.methods.BuyTokens().send({ value: etherAmount, from: this.state.account }).on('transactionHash', (hash) => {
+  this.state.ethSwap.methods.buyTokens().send({ value: etherAmount, from: this.state.account, gasLimit: 3e7}).on('transactionHash', (hash) => {
     this.setState({ loading: false })
-    console.log(this.BuyTokens)
+    console.log(this.buyTokens)
   })
+  
+ 
+ 
 }
 
 constructor(props) {
@@ -102,7 +105,7 @@ constructor(props) {
       content = <Main 
       ethBalance = {this.state.ethBalance} 
       tokenBalance = {this.state.tokenBalance}
-      buyTokens = {this.BuyTokens}/>
+      buyTokens = {this.buyTokens}/>
     }
     return (
       <div>
