@@ -21,11 +21,13 @@ contract EthSwap {
 
     function buyTokens() public payable {
         //Redemption rate is amount of DApp token per Eth
-        rate;
         //calculate number of tokes to buy
-        uint256 tokenAmount = msg.value * rate;
+        uint tokenAmount = msg.value * rate;
         //Require that EthSWap has enough Token the buyer wants to buy
-        require(token.balanceOf(address(this)) >= tokenAmount);
+        require(
+            token.balanceOf(address(this)) >= tokenAmount,
+            "Token balance is lower"
+        );
         token.transfer(msg.sender, tokenAmount);
 
         //Emit an event
@@ -33,7 +35,10 @@ contract EthSwap {
     }
 
     function sellTokens(uint256 _amount) public payable {
-        require(token.balanceOf(msg.sender) >= _amount);
+        require(
+            token.balanceOf(msg.sender) >= _amount,
+            "Token balance is lower"
+        );
         uint256 etherAmount;
         etherAmount = _amount / rate;
         require(address(this).balance >= etherAmount);
